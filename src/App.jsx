@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
-import { Box, Button, Container, Flex, Grid, Heading, HStack, SimpleGrid, Stack, Text, VStack } from "@chakra-ui/react";
-
+import { Box, Button, Card, Container, Flex, Grid, Heading, HStack, Icon, SimpleGrid, Stack, Text, VStack } from "@chakra-ui/react";
+import { FaApple } from 'react-icons/fa';
+import { ColorModeButton } from "@/components/ui/color-mode"
 function App() {
   const boxStyles = {
     p: "1em",
@@ -18,12 +19,21 @@ function App() {
 
 
   return (
-    <>
-      <Container fluid bgColor="blue.200" p="1em" borderRadius="md" >
-        <Text fontSize="2xl" fontWeight="bold" color="blue.500">
+    <Container m="0" p="0" w="100%" maxW="100%" height="100vh" bg="bg.muted" color="fg">
+      <ColorModeButton />
+      <Box fluid bgColor="bg.info" p="1em" borderRadius="md" bg="bg.subtle" >
+        <Text fontSize="2xl" fontWeight="bold" color="danger">
           This is a text
         </Text>
-      </Container>
+        <Button color="fg.success" bg="bg.success" borderColor="border.success">Success Button</Button>
+        <Button color="fg.info" bg="bg.info" borderColor="border.info">Info Button</Button>
+        <Button color="fg.error" bg="bg.error" borderColor="border.error">Error Button</Button>
+      </Box>
+
+      <Box w="100px" h="100px" m="1em" borderRadius="lg" borderColor="blue.200" borderWidth="2px">
+        <Text>This is a box with width and height</Text>
+      </Box>
+
       <Flex direction="column" w="6xl" alignItems={"left"}>
         <Heading my="1em" p="1em">Chakra UI Components</Heading>
         <Text ml="1em">ewofjewoij wfnow</Text>
@@ -31,6 +41,10 @@ function App() {
 
         <Box {...boxStyles}>
           <Text>This is a box</Text>
+        </Box>
+
+        <Box>
+          <Text fontSize="2em" fontWeight={{ base: "medium", lg: "bold" }}>Responsive Text</Text>
         </Box>
 
         <Button
@@ -64,8 +78,26 @@ function App() {
           <Box bg="green" h="50px"><Text>This is box3 in Stack</Text></Box>
         </VStack>
 
+        <Box>
+          <Icon size="lg" color="pink.700">
+            <FaApple />
+          </Icon>
+        </Box>
+
+        <Box>
+          <Card.Root maxW={"sm"}>
+            <Card.Header>Title</Card.Header>
+            <Card.Body>Description</Card.Body>
+            <Card.Footer>
+              <HStack spacing="4">
+                <Button colorPalette="blue">Button 1</Button>
+                <Button colorPalette="red">Button 2</Button>
+              </HStack>
+            </Card.Footer>
+          </Card.Root>
+        </Box>
       </Flex>
-    </>
+    </Container >
   )
 }
 
